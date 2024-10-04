@@ -43,62 +43,73 @@ class _SpellsViewState extends BaseState<SpellsView> {
               child: ListView.builder(
                 itemCount: viewModel.spellsLength(),
                 itemBuilder: (context, index) {
-                  return Container(
-                    margin: const EdgeInsets.only(bottom: 12),
-                    height: 100,
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                      border: Border.all(width: .1),
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Expanded(
-                          child: Row(
-                            children: [
-                              const SizedBox(
-                                height: 80,
-                                width: 80,
-                                // Add spell icon
-                                child: Padding(
-                                  padding: EdgeInsets.all(10.0),
-                                  child: Image(
-                                    image: AssetImage("images/spell.png"),
-                                    fit: BoxFit.contain,
-                                  ),
-                                ),
-                              ),
-                              Expanded(
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                        "Spell: ${viewModel.spells?[index].name}"),
-                                    Text(
-                                      "Description: ${viewModel.spells?[index].description}",
-                                      maxLines: 3,
-                                      overflow: TextOverflow.ellipsis,
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        IconButton(
-                            onPressed: () {},
-                            icon: const Icon(Icons.arrow_forward_ios))
-                      ],
-                    ),
-                  );
+                  return buildSpellCard(viewModel, index);
                 },
               ),
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  Container buildSpellCard(SpellsViewModel viewModel, int index) {
+    return Container(
+      margin: const EdgeInsets.only(bottom: 12),
+      height: 100,
+      width: double.infinity,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        border: Border.all(width: .5),
+        borderRadius: BorderRadius.circular(8),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.5),
+            spreadRadius: 1,
+            blurRadius: 7,
+            offset: const Offset(0, 3), // changes position of shadow
+          ),
+        ],
+      ),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Expanded(
+            child: Row(
+              children: [
+                const SizedBox(
+                  height: 80,
+                  width: 80,
+                  // Add spell icon
+                  child: Padding(
+                    padding: EdgeInsets.all(10.0),
+                    child: Image(
+                      image: AssetImage("images/spell.png"),
+                      fit: BoxFit.contain,
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text("Spell: ${viewModel.spells?[index].name}"),
+                      Text(
+                        "Description: ${viewModel.spells?[index].description}",
+                        maxLines: 3,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+          IconButton(
+              onPressed: () {}, icon: const Icon(Icons.arrow_forward_ios))
+        ],
       ),
     );
   }

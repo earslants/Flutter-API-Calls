@@ -38,6 +38,7 @@ dependencies:
   provider: ^6.1.2
   dio: ^5.7.0
   shared_preferences: ^2.0.15
+  flutter_speed_dial: ^6.2.0
 
 dev_dependencies:
   flutter_test:

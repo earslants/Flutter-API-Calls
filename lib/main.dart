@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:harrypotterapi/view/characters/view/characters_view.dart';
 import 'package:harrypotterapi/view/home/view/home_view.dart';
 import 'package:provider/provider.dart';
 import 'core/init/notifier/provider_list.dart';

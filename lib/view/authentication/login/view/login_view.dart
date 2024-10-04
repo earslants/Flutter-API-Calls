@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:harrypotterapi/core/base/state/base_state.dart';
 import 'package:harrypotterapi/core/base/view/base_view.dart';
-import 'package:harrypotterapi/core/constants/enums/network_route.dart';
-import 'package:harrypotterapi/core/init/network/network_manager.dart';
 import 'package:harrypotterapi/view/authentication/login/viewmodel/login_view_model.dart';
 
 class LoginView extends StatefulWidget {

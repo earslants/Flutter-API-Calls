@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:harrypotterapi/core/base/viewmodel/base_view_model.dart';
 import 'package:harrypotterapi/view/characters/view/characters_view.dart';
-import 'package:harrypotterapi/view/home/view/home_view.dart';
 
 class HomeViewModel extends BaseViewModel with ChangeNotifier {
   int pageIndex = 1;

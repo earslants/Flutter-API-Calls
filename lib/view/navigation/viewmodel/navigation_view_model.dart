@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:harrypotterapi/core/base/viewmodel/base_view_model.dart';
 import 'package:harrypotterapi/view/characters/view/characters_view.dart';
 
-class HomeViewModel extends BaseViewModel with ChangeNotifier {
-  int pageIndex = 1;
+class NavigationViewModel extends BaseViewModel with ChangeNotifier {
+  int pageIndex = 0;
   Widget body = Container();
 
   @override
   void init() {
-    pageIndex = 1;
+    pageIndex = 0;
   }
 
   @override
@@ -24,10 +24,8 @@ class HomeViewModel extends BaseViewModel with ChangeNotifier {
     if (pageIndex == 0) {
       body = const CharactersView();
     } else if (pageIndex == 1) {
-      body = Container();
-    } else if (pageIndex == 2) {
       body = Container(
-        child: const Text("Houses View"),
+        child: const Text("Spells View"),
       );
     }
   }

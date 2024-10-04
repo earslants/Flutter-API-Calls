@@ -1,5 +1,5 @@
 import 'package:harrypotterapi/view/characters/viewmodel/characters_view_model.dart';
-import 'package:harrypotterapi/view/home/viewmodel/home_view_model.dart';
+import 'package:harrypotterapi/view/navigation/viewmodel/navigation_view_model.dart';
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
 
@@ -17,6 +17,6 @@ class ApplicationProvider {
   List<SingleChildWidget> dependItems = [
     ChangeNotifierProvider(create: (context) => LoginViewModel()),
     ChangeNotifierProvider(create: (context) => CharactersViewModel()),
-    ChangeNotifierProvider(create: (context) => HomeViewModel()),
+    ChangeNotifierProvider(create: (context) => NavigationViewModel()),
   ];
 }

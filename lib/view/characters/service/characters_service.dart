@@ -15,6 +15,8 @@ class CharactersService extends ICharactersService {
     final response = await NetworkManager.instance.dioGet(path: query);
 
     // Veriyi List<Character> olarak döndürüyoruz
-    return (response as List).map((json) => Character.fromJson(json)).toList();
+    return (response as List)
+        .map((json) => Character().fromJson(json))
+        .toList();
   }
 }

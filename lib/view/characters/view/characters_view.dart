@@ -54,35 +54,48 @@ class _CharactersViewState extends BaseState<CharactersView> {
                       borderRadius: BorderRadius.circular(8),
                     ),
                     child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Row(
-                          children: [
-                            SizedBox(
-                              height: 90,
-                              width: 80,
-                              child: Image.network(
-                                viewModel.characters?[index].image == ""
-                                    ? DefaultImageUrl.URL
-                                    : viewModel.characters?[index].image ??
-                                        DefaultImageUrl.URL,
+                        Expanded(
+                          child: Row(
+                            children: [
+                              SizedBox(
+                                height: 80,
+                                width: 80,
+                                child: Image.network(
+                                  viewModel.characters?[index].image == ""
+                                      ? DefaultImageUrl.URL
+                                      : viewModel.characters?[index].image ??
+                                          DefaultImageUrl.URL,
+                                ),
                               ),
-                            ),
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                    "Name: ${viewModel.characters?[index].name}"),
-                                Text(
-                                    "Species: ${viewModel.characters?[index].species}"),
-                                Text(
-                                    "House: ${viewModel.characters?[index].house}"),
-                                Text(
-                                    "Actor: ${viewModel.characters?[index].actor}"),
-                              ],
-                            ),
-                          ],
+                              Expanded(
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                        "Name: ${viewModel.characters?[index].name}"),
+                                    Text(
+                                        "Species: ${viewModel.characters?[index].species}"),
+                                    Text(
+                                        "House: ${viewModel.characters?[index].house}"),
+                                    Expanded(
+                                      child: Text(
+                                        "Actor: ${viewModel.characters?[index].actor}",
+                                        overflow: TextOverflow.ellipsis,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
+                        IconButton(
+                            onPressed: () {},
+                            icon: const Icon(Icons.arrow_forward_ios))
                       ],
                     ),
                   );

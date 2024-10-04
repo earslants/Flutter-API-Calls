@@ -26,6 +26,10 @@ class _NavigationViewState extends BaseState<NavigationView> {
 
   Scaffold buildScaffold(BuildContext context, NavigationViewModel viewModel) {
     return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text(viewModel.title),
+      ),
       body: viewModel.body,
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: viewModel.pageIndex,

@@ -1,32 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:harrypotterapi/core/base/state/base_state.dart';
 import 'package:harrypotterapi/core/base/view/base_view.dart';
-import 'package:harrypotterapi/core/constants/image/default_image_url.dart';
-import 'package:harrypotterapi/view/characters/viewmodel/characters_view_model.dart';
+import 'package:harrypotterapi/view/spells/viewmodel/spells_view_model.dart';
 
-class CharactersView extends StatefulWidget {
-  const CharactersView({super.key});
+class SpellsView extends StatefulWidget {
+  const SpellsView({super.key});
 
   @override
-  State<CharactersView> createState() => _CharactersViewState();
+  State<SpellsView> createState() => _SpellsViewState();
 }
 
-class _CharactersViewState extends BaseState<CharactersView> {
+class _SpellsViewState extends BaseState<SpellsView> {
   @override
   Widget build(BuildContext context) {
-    return BaseView<CharactersViewModel>(
-      viewModel: CharactersViewModel(),
-      onModelReady: (CharactersViewModel model) {
-        model.setContext(context);
-        model.init();
-      },
-      onPageBuilder: (BuildContext context, CharactersViewModel viewModel) =>
-          buildPage(context, viewModel),
-    );
+    return BaseView<SpellsViewModel>(
+        viewModel: SpellsViewModel(),
+        onModelReady: (SpellsViewModel model) {
+          model.setContext(context);
+          model.init();
+        },
+        onPageBuilder: (BuildContext context, SpellsViewModel viewModel) =>
+            buildPage(context, viewModel));
   }
 
-  Widget buildPage(BuildContext context, CharactersViewModel viewModel) {
-    if (viewModel.characters == null) {
+  Widget buildPage(BuildContext context, SpellsViewModel viewModel) {
+    if (viewModel.spells == null) {
       return const Center(
         child: SizedBox(
           height: 50,
@@ -43,7 +41,7 @@ class _CharactersViewState extends BaseState<CharactersView> {
           children: [
             Expanded(
               child: ListView.builder(
-                itemCount: viewModel.charsLength(),
+                itemCount: viewModel.spellsLength(),
                 itemBuilder: (context, index) {
                   return Container(
                     margin: const EdgeInsets.only(bottom: 12),
@@ -60,14 +58,16 @@ class _CharactersViewState extends BaseState<CharactersView> {
                         Expanded(
                           child: Row(
                             children: [
-                              SizedBox(
+                              const SizedBox(
                                 height: 80,
                                 width: 80,
-                                child: Image.network(
-                                  viewModel.characters?[index].image == ""
-                                      ? DefaultImageUrl.URL
-                                      : viewModel.characters?[index].image ??
-                                          DefaultImageUrl.URL,
+                                // Add spell icon
+                                child: Padding(
+                                  padding: EdgeInsets.all(10.0),
+                                  child: Image(
+                                    image: AssetImage("images/spell.png"),
+                                    fit: BoxFit.contain,
+                                  ),
                                 ),
                               ),
                               Expanded(
@@ -76,13 +76,10 @@ class _CharactersViewState extends BaseState<CharactersView> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                        "Name: ${viewModel.characters?[index].name}"),
+                                        "Spell: ${viewModel.spells?[index].name}"),
                                     Text(
-                                        "Species: ${viewModel.characters?[index].species}"),
-                                    Text(
-                                        "House: ${viewModel.characters?[index].house}"),
-                                    Text(
-                                      "Actor: ${viewModel.characters?[index].actor}",
+                                      "Description: ${viewModel.spells?[index].description}",
+                                      maxLines: 3,
                                       overflow: TextOverflow.ellipsis,
                                     ),
                                   ],

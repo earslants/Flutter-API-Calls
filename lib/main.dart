@@ -1,6 +1,6 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:harrypotterapi/view/authentication/login/view/login_view.dart';
-import 'package:harrypotterapi/view/navigation/view/navigation_view.dart';
+import 'package:harrypotterapi/view/authentication/splash/view/splash_view.dart';
 import 'package:provider/provider.dart';
 import 'core/init/notifier/provider_list.dart';
 
@@ -14,6 +14,7 @@ Future<void> main() async {
 
 Future<void> _init() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
 }
 
 class MyApp extends StatelessWidget {
@@ -28,7 +29,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const LoginView(),
+      home: const SplashView(),
     );
   }
 }

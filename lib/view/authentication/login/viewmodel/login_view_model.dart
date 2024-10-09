@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:harrypotterapi/core/base/viewmodel/base_view_model.dart';
 import 'package:harrypotterapi/view/authentication/login/model/login_model.dart';
@@ -14,8 +15,11 @@ class LoginViewModel extends BaseViewModel with ChangeNotifier {
   FocusNode usernameFocus = FocusNode();
   FocusNode passwordFocus = FocusNode();
 
-  bool? _isAuth;
-  bool? get isAuth => _isAuth;
+  bool _isVisible = false;
+  bool get isVisible => _isVisible;
+
+  final bool _isAuth = false;
+  bool get isAuth => _isAuth;
 
   @override
   void setContext(BuildContext context) => myContext = context;
@@ -25,19 +29,17 @@ class LoginViewModel extends BaseViewModel with ChangeNotifier {
     emailController = TextEditingController();
     passwordController = TextEditingController();
     loginService = LoginService(context: myContext);
-    checkAuth();
   }
 
-  void checkAuth() async {
-    _isAuth = await loginService!.checkAuth();
+  void setIsVisible() {
+    _isVisible = !_isVisible;
     notifyListeners();
   }
 
-  void setAuth() {}
-
   void login() async {
     try {
-      await loginService!.login(LoginModel());
+      await loginService!.login(LoginModel(
+          email: emailController?.text, password: passwordController?.text));
     } catch (e) {
       // TODO Add Error pop up message
     }

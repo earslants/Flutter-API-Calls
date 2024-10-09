@@ -1,3 +1,4 @@
+import 'package:harrypotterapi/view/authentication/splash/viewmodel/splash_view_model.dart';
 import 'package:harrypotterapi/view/characters/viewmodel/characters_view_model.dart';
 import 'package:harrypotterapi/view/navigation/viewmodel/navigation_view_model.dart';
 import 'package:harrypotterapi/view/spells/viewmodel/spells_view_model.dart';
@@ -20,5 +21,6 @@ class ApplicationProvider {
     ChangeNotifierProvider(create: (context) => CharactersViewModel()),
     ChangeNotifierProvider(create: (context) => NavigationViewModel()),
     ChangeNotifierProvider(create: (context) => SpellsViewModel()),
+    ChangeNotifierProvider(create: (context) => SplashViewModel()),
   ];
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:harrypotterapi/view/authentication/login/view/login_view.dart';
 import 'package:harrypotterapi/view/navigation/view/navigation_view.dart';
 import 'package:provider/provider.dart';
 import 'core/init/notifier/provider_list.dart';
@@ -27,7 +28,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const NavigationView(),
+      home: const LoginView(),
     );
   }
 }

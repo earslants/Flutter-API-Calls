@@ -39,7 +39,9 @@ class _LoginViewState extends BaseState<LoginView> {
               child: Column(
                 children: [
                   ElevatedButton(
-                    onPressed: () async {},
+                    onPressed: () async {
+                      viewModel.login();
+                    },
                     child: const Text("Deneme"),
                   ),
                 ],

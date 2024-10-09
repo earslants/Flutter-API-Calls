@@ -47,7 +47,7 @@ class _SplashViewState extends BaseState<SplashView> {
           ),
           const Center(
             child: Text(
-              "Welcome",
+              "Welcome!",
               style: TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.w800,

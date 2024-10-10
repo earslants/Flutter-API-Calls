@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:harrypotterapi/core/constants/app/app_constants.dart';
-import 'package:harrypotterapi/core/init/cache/locale_manager.dart';
+import '../../constants/app/app_constants.dart';
+import '../../init/cache/locale_manager.dart';
 
 abstract class BaseViewModel {
   late BuildContext myContext;

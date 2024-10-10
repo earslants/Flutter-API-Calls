@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:harrypotterapi/core/base/viewmodel/base_view_model.dart';
-import 'package:harrypotterapi/view/authentication/login/model/login_model.dart';
+import '../../../../core/base/viewmodel/base_view_model.dart';
+import '../model/login_model.dart';
 import '../service/ILoginService.dart';
 import '../service/login_service.dart';
 

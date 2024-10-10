@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
-import 'package:harrypotterapi/core/base/state/base_state.dart';
-import 'package:harrypotterapi/core/base/view/base_view.dart';
-import 'package:harrypotterapi/view/navigation/viewmodel/navigation_view_model.dart';
-import 'package:provider/provider.dart';
+import '../../../core/base/state/base_state.dart';
+import '../../../core/base/view/base_view.dart';
+import '../viewmodel/navigation_view_model.dart';
 
 class NavigationView extends StatefulWidget {
   const NavigationView({super.key});

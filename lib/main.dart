@@ -1,6 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:harrypotterapi/view/authentication/splash/view/splash_view.dart';
+import 'view/authentication/splash/view/splash_view.dart';
 import 'package:provider/provider.dart';
 import 'core/init/notifier/provider_list.dart';
 

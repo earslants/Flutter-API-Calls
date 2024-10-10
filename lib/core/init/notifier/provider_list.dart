@@ -1,7 +1,7 @@
-import 'package:harrypotterapi/view/authentication/splash/viewmodel/splash_view_model.dart';
-import 'package:harrypotterapi/view/characters/viewmodel/characters_view_model.dart';
-import 'package:harrypotterapi/view/navigation/viewmodel/navigation_view_model.dart';
-import 'package:harrypotterapi/view/spells/viewmodel/spells_view_model.dart';
+import '../../../view/authentication/splash/viewmodel/splash_view_model.dart';
+import '../../../view/characters/viewmodel/characters_view_model.dart';
+import '../../../view/navigation/viewmodel/navigation_view_model.dart';
+import '../../../view/spells/viewmodel/spells_view_model.dart';
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
 

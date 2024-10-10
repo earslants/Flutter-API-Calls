@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:harrypotterapi/core/base/viewmodel/base_view_model.dart';
-import 'package:harrypotterapi/view/characters/model/character_model.dart';
-import 'package:harrypotterapi/view/characters/service/ICharactersService.dart';
-import 'package:harrypotterapi/view/characters/service/characters_service.dart';
+import '../../../core/base/viewmodel/base_view_model.dart';
+import '../model/character_model.dart';
+import '../service/ICharactersService.dart';
+import '../service/characters_service.dart';
 
 class CharactersViewModel extends BaseViewModel with ChangeNotifier {
   List<Character>? characters;

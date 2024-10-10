@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:harrypotterapi/view/authentication/login/service/ILoginService.dart';
+import 'ILoginService.dart';
 
 import '../model/login_model.dart';
 

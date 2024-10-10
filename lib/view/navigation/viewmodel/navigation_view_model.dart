@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:harrypotterapi/core/base/viewmodel/base_view_model.dart';
-import 'package:harrypotterapi/view/characters/model/character_model.dart';
-import 'package:harrypotterapi/view/characters/view/characters_view.dart';
-import 'package:harrypotterapi/view/spells/view/spells_view.dart';
+import '../../../core/base/viewmodel/base_view_model.dart';
+import '../../characters/view/characters_view.dart';
+import '../../spells/view/spells_view.dart';
 
 class NavigationViewModel extends BaseViewModel with ChangeNotifier {
   int pageIndex = 0;

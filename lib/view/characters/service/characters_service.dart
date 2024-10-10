@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:harrypotterapi/core/constants/enums/network_route.dart';
-import 'package:harrypotterapi/core/init/network/network_manager.dart';
-import 'package:harrypotterapi/view/characters/model/character_model.dart';
-import 'package:harrypotterapi/view/characters/service/ICharactersService.dart';
+import '../../../core/constants/enums/network_route.dart';
+import '../../../core/init/network/network_manager.dart';
+import '../model/character_model.dart';
+import 'ICharactersService.dart';
 
 class CharactersService extends ICharactersService {
   BuildContext? context;

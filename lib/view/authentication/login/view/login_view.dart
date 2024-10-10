@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:harrypotterapi/core/base/state/base_state.dart';
-import 'package:harrypotterapi/core/base/view/base_view.dart';
-import 'package:harrypotterapi/core/components/auth/my_text_field.dart';
-import 'package:harrypotterapi/view/authentication/login/viewmodel/login_view_model.dart';
+import '../../../../core/base/state/base_state.dart';
+import '../../../../core/base/view/base_view.dart';
+import '../../../../core/components/auth/my_text_field.dart';
+import '../viewmodel/login_view_model.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});

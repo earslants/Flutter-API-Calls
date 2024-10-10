@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:harrypotterapi/core/base/state/base_state.dart';
-import 'package:harrypotterapi/core/base/view/base_view.dart';
-import 'package:harrypotterapi/view/authentication/splash/viewmodel/splash_view_model.dart';
+import '../../../../core/base/state/base_state.dart';
+import '../../../../core/base/view/base_view.dart';
+import '../viewmodel/splash_view_model.dart';
 
 class SplashView extends StatefulWidget {
   const SplashView({super.key});

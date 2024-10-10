@@ -1,8 +1,8 @@
 import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:harrypotterapi/core/base/model/base_model.dart';
-import 'package:harrypotterapi/core/base/viewmodel/base_view_model.dart';
+import '../../base/model/base_model.dart';
+import '../../base/viewmodel/base_view_model.dart';
 
 class NetworkManager extends BaseNetworkManager {
   static NetworkManager? _instance;

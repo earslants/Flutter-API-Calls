@@ -1,4 +1,4 @@
-import 'package:harrypotterapi/core/base/model/base_model.dart';
+import '../../../core/base/model/base_model.dart';
 
 class Spell extends BaseModel {
   String? id;

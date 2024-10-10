@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:harrypotterapi/core/base/viewmodel/base_view_model.dart';
-import 'package:harrypotterapi/view/spells/service/ISpellsService.dart';
-import 'package:harrypotterapi/view/spells/service/spells_service.dart';
+import '../../../core/base/viewmodel/base_view_model.dart';
+import '../service/ISpellsService.dart';
+import '../service/spells_service.dart';
 
 import '../model/spell_model.dart';
 

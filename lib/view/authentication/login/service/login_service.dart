@@ -18,4 +18,13 @@ class LoginService extends ILoginService {
       print("Auth Error: $e");
     }
   }
+
+  @override
+  Future<void> logOut() async {
+    try {
+      await auth.signOut();
+    } catch (e) {
+      print(e);
+    }
+  }
 }

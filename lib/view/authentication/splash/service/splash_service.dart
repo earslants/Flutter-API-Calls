@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:harrypotterapi/view/home/view/home_view.dart';
 import '../../login/view/login_view.dart';
 import 'ISplashService.dart';
 import '../../../navigation/view/navigation_view.dart';
@@ -13,12 +14,7 @@ class SplashService extends ISplashService {
   @override
   Future<void> navigate() async {
     await Future.delayed(const Duration(seconds: 2));
-    if (auth.currentUser?.uid != null) {
-      Navigator.push(context!,
-          MaterialPageRoute(builder: (context) => const NavigationView()));
-      return;
-    }
-    Navigator.push(
-        context!, MaterialPageRoute(builder: (context) => const LoginView()));
+    Navigator.push(context!,
+        MaterialPageRoute(builder: (context) => const NavigationView()));
   }
 }

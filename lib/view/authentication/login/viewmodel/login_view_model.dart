@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../../../../core/base/viewmodel/base_view_model.dart';
 import '../model/login_model.dart';
@@ -45,4 +44,6 @@ class LoginViewModel extends BaseViewModel with ChangeNotifier {
     }
     notifyListeners();
   }
+
+  void logOut() async {}
 }

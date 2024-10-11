@@ -1,6 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:harrypotterapi/core/components/app/error_handler.dart';
+import 'package:harrypotterapi/core/constants/enums/locale_keys_enum.dart';
+import 'package:harrypotterapi/core/init/cache/locale_manager.dart';
 import '../../../../core/base/viewmodel/base_view_model.dart';
 import '../model/login_model.dart';
 import '../service/ILoginService.dart';
@@ -26,7 +28,7 @@ class LoginViewModel extends BaseViewModel with ChangeNotifier {
   bool _isAuth = false;
   bool get isAuth => _isAuth;
 
-  final bool _rememberMe = false;
+  bool? _rememberMe = false;
   bool? get rememberMe => _rememberMe;
 
   @override
@@ -34,9 +36,16 @@ class LoginViewModel extends BaseViewModel with ChangeNotifier {
 
   @override
   void init() {
+    loginService = LoginService(context: myContext);
     emailController = TextEditingController();
     passwordController = TextEditingController();
-    loginService = LoginService(context: myContext);
+    final email = LocaleManager.instance.getStringValue(PreferencesKeys.EMAIL);
+    final password =
+        LocaleManager.instance.getStringValue(PreferencesKeys.PASSWORD);
+    if (email != '' && password != '') {
+      emailController?.text = email;
+      passwordController?.text = password;
+    }
     listenAuthState();
   }
 
@@ -55,6 +64,14 @@ class LoginViewModel extends BaseViewModel with ChangeNotifier {
 
   void login() async {
     try {
+      if (_rememberMe == true &&
+          emailController != null &&
+          passwordController != null) {
+        LocaleManager.instance
+            .setStringValue(PreferencesKeys.EMAIL, emailController!.text);
+        LocaleManager.instance
+            .setStringValue(PreferencesKeys.PASSWORD, passwordController!.text);
+      }
       await loginService!.login(LoginModel(
           email: emailController?.text, password: passwordController?.text));
     } catch (e) {
@@ -68,5 +85,19 @@ class LoginViewModel extends BaseViewModel with ChangeNotifier {
     } catch (e) {
       errorTextHandler('An error occured!', myContext);
     }
+  }
+
+  void setRememberMe(bool? value) {
+    _rememberMe = value;
+    notifyListeners();
+  }
+
+  void deneme() {
+    final email = LocaleManager.instance.getStringValue(PreferencesKeys.EMAIL);
+    final password =
+        LocaleManager.instance.getStringValue(PreferencesKeys.PASSWORD);
+
+    print("EMAIL: $email");
+    print("PASSWORD: $password");
   }
 }

@@ -1,4 +1,5 @@
 enum PreferencesKeys {
-  UID,
+  EMAIL,
+  PASSWORD,
   IS_FIRST,
 }

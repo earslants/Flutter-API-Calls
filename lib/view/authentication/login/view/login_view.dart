@@ -60,7 +60,11 @@ class _LoginViewState extends BaseState<LoginView> {
                           children: [
                             Row(
                               children: [
-                                Checkbox(value: false, onChanged: (value) {}),
+                                Checkbox(
+                                  value: viewModel.rememberMe,
+                                  onChanged: (value) =>
+                                      viewModel.setRememberMe(value),
+                                ),
                                 const Text("Remember Me"),
                               ],
                             ),
@@ -71,6 +75,12 @@ class _LoginViewState extends BaseState<LoginView> {
                               child: const Text("Log In"),
                             ),
                           ],
+                        ),
+                        ElevatedButton(
+                          onPressed: () {
+                            viewModel.deneme();
+                          },
+                          child: const Text("DENEME"),
                         ),
                       ],
                     ),

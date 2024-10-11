@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../../../core/base/state/base_state.dart';
 import '../../../core/base/view/base_view.dart';
 import '../../../core/constants/image/default_image_url.dart';

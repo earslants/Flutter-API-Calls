@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../../../core/constants/enums/network_route.dart';
 import '../../../core/init/network/network_manager.dart';
 import '../model/spell_model.dart';

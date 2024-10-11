@@ -1,5 +1,5 @@
-import 'package:harrypotterapi/view/home/viewmodel/home_view_model.dart';
-import 'package:harrypotterapi/view/navigation/viewmodel/navigation_view_model.dart';
+import '../../../view/home/viewmodel/home_view_model.dart';
+import '../../../view/navigation/viewmodel/navigation_view_model.dart';
 
 import '../../../view/authentication/splash/viewmodel/splash_view_model.dart';
 import '../../../view/characters/viewmodel/characters_view_model.dart';

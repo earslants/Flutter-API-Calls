@@ -1,8 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'view/authentication/splash/view/splash_view.dart';
 import 'package:provider/provider.dart';
+
 import 'core/init/notifier/provider_list.dart';
+import 'view/authentication/splash/view/splash_view.dart';
 
 Future<void> main() async {
   await _init();

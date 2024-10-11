@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../../../core/base/viewmodel/base_view_model.dart';
 import '../model/character_model.dart';
 import '../service/ICharactersService.dart';

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:harrypotterapi/view/authentication/login/viewmodel/login_view_model.dart';
-import 'package:harrypotterapi/view/home/viewmodel/home_view_model.dart';
 import 'package:provider/provider.dart';
 
 import '../../../core/base/view/base_view.dart';
+import '../../authentication/login/viewmodel/login_view_model.dart';
+import '../viewmodel/home_view_model.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -36,7 +36,12 @@ class _HomeViewState extends State<HomeView> {
           Consumer<LoginViewModel>(
             builder: (context, viewModel, child) {
               return IconButton(
-                  onPressed: () {}, icon: const Icon(Icons.logout));
+                onPressed: () async {
+                  print(viewModel.isAuth);
+                  viewModel.logOut();
+                },
+                icon: const Icon(Icons.logout),
+              );
             },
           ),
         ],

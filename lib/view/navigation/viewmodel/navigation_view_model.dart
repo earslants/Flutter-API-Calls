@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:harrypotterapi/core/base/viewmodel/base_view_model.dart';
-import 'package:harrypotterapi/view/navigation/service/INavigationService.dart';
-import 'package:harrypotterapi/view/navigation/service/navigation_service.dart';
+
+import '../../../core/base/viewmodel/base_view_model.dart';
+import '../service/INavigationService.dart';
+import '../service/navigation_service.dart';
 
 class NavigationViewModel extends BaseViewModel with ChangeNotifier {
   bool? _isAuth;

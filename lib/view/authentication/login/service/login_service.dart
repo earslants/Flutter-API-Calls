@@ -1,8 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'ILoginService.dart';
 
 import '../model/login_model.dart';
+import 'ILoginService.dart';
 
 class LoginService extends ILoginService {
   BuildContext? context;
@@ -22,7 +22,7 @@ class LoginService extends ILoginService {
   @override
   Future<void> logOut() async {
     try {
-      await auth.signOut();
+      auth.signOut();
     } catch (e) {
       print(e);
     }

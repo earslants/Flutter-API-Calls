@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:harrypotterapi/view/authentication/login/view/login_view.dart';
-import 'package:harrypotterapi/view/home/view/home_view.dart';
-import 'package:harrypotterapi/view/navigation/viewmodel/navigation_view_model.dart';
-
+import '../../authentication/login/view/login_view.dart';
+import '../../authentication/login/viewmodel/login_view_model.dart';
+import '../../home/view/home_view.dart';
 import '../../../core/base/view/base_view.dart';
 
 class NavigationView extends StatefulWidget {
@@ -15,19 +14,19 @@ class NavigationView extends StatefulWidget {
 class _NavigationViewState extends State<NavigationView> {
   @override
   Widget build(BuildContext context) {
-    return BaseView<NavigationViewModel>(
-      viewModel: NavigationViewModel(),
-      onModelReady: (NavigationViewModel model) {
+    return BaseView<LoginViewModel>(
+      viewModel: LoginViewModel(),
+      onModelReady: (LoginViewModel model) {
         model.setContext(context);
         model.init();
       },
-      onPageBuilder: (BuildContext context, NavigationViewModel viewModel) =>
+      onPageBuilder: (BuildContext context, LoginViewModel viewModel) =>
           buildPage(context, viewModel),
     );
   }
 
-  Widget buildPage(BuildContext context, NavigationViewModel viewModel) {
-    if (viewModel.isAuth!) {
+  Widget buildPage(BuildContext context, LoginViewModel viewModel) {
+    if (viewModel.isAuth) {
       return const HomeView();
     }
     return const LoginView();

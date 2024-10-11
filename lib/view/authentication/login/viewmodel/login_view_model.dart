@@ -1,14 +1,15 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:harrypotterapi/core/components/app/error_handler.dart';
 import '../../../../core/base/viewmodel/base_view_model.dart';
 import '../model/login_model.dart';
 import '../service/ILoginService.dart';
 import '../service/login_service.dart';
 
 class LoginViewModel extends BaseViewModel with ChangeNotifier {
-  final FirebaseAuth _auth = FirebaseAuth.instance;
   // ignore: unused_field
   User? _user;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
 
   GlobalKey<FormState> formState = GlobalKey();
   GlobalKey<ScaffoldState> scaffoldState = GlobalKey();
@@ -24,6 +25,9 @@ class LoginViewModel extends BaseViewModel with ChangeNotifier {
 
   bool _isAuth = false;
   bool get isAuth => _isAuth;
+
+  final bool _rememberMe = false;
+  bool? get rememberMe => _rememberMe;
 
   @override
   void setContext(BuildContext context) => myContext = context;
@@ -53,20 +57,16 @@ class LoginViewModel extends BaseViewModel with ChangeNotifier {
     try {
       await loginService!.login(LoginModel(
           email: emailController?.text, password: passwordController?.text));
-      _isAuth = true;
     } catch (e) {
-      // TODO Add Error pop up message
+      errorTextHandler('An error occured!', myContext);
     }
-    notifyListeners();
   }
 
   void logOut() async {
     try {
       await loginService?.logOut();
-      _isAuth = false;
     } catch (e) {
-      // Error
+      errorTextHandler('An error occured!', myContext);
     }
-    notifyListeners();
   }
 }

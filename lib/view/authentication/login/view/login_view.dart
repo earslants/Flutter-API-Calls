@@ -36,46 +36,43 @@ class _LoginViewState extends BaseState<LoginView> {
         body: Column(
           children: [
             Expanded(
+              flex: 4,
               child: Container(
                 color: Colors.blue,
               ),
             ),
             Expanded(
+              flex: 6,
               child: Padding(
                 padding: dynamicPadding(),
                 child: Column(
                   children: [
-                    MyTextField(
-                      focusNode: viewModel.usernameFocus,
-                      controller: viewModel.emailController!,
-                      hintText: "E-mail",
-                      obscureText: false,
-                      keyboardType: TextInputType.emailAddress,
-                      prefixIcon: const Icon(
-                        CupertinoIcons.mail_solid,
-                      ),
-                    ),
-                    MyTextField(
-                      focusNode: viewModel.passwordFocus,
-                      controller: viewModel.passwordController!,
-                      hintText: "Password",
-                      obscureText: viewModel.isVisible,
-                      keyboardType: TextInputType.emailAddress,
-                      prefixIcon: const Icon(
-                        CupertinoIcons.lock_fill,
-                      ),
-                      suffixIcon: IconButton(
-                        onPressed: viewModel.setIsVisible,
-                        icon: viewModel.isVisible
-                            ? const Icon(Icons.visibility_off)
-                            : const Icon(Icons.visibility),
-                      ),
-                    ),
-                    TextButton(
-                      onPressed: () async {
-                        viewModel.login();
-                      },
-                      child: const Text("Log In"),
+                    SizedBox(height: dynamicHeight(.03)),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        buildMailField(viewModel),
+                        SizedBox(height: dynamicHeight(.02)),
+                        buildPasswordField(viewModel),
+                        SizedBox(height: dynamicHeight(.01)),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Row(
+                              children: [
+                                Checkbox(value: false, onChanged: (value) {}),
+                                const Text("Remember Me"),
+                              ],
+                            ),
+                            TextButton(
+                              onPressed: () async {
+                                viewModel.login();
+                              },
+                              child: const Text("Log In"),
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
                   ],
                 ),
@@ -83,6 +80,38 @@ class _LoginViewState extends BaseState<LoginView> {
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  MyTextField buildPasswordField(LoginViewModel viewModel) {
+    return MyTextField(
+      focusNode: viewModel.passwordFocus,
+      controller: viewModel.passwordController!,
+      hintText: "Password",
+      obscureText: viewModel.isVisible,
+      keyboardType: TextInputType.emailAddress,
+      prefixIcon: const Icon(
+        CupertinoIcons.lock_fill,
+      ),
+      suffixIcon: IconButton(
+        onPressed: viewModel.setIsVisible,
+        icon: viewModel.isVisible
+            ? const Icon(Icons.visibility_off)
+            : const Icon(Icons.visibility),
+      ),
+    );
+  }
+
+  MyTextField buildMailField(LoginViewModel viewModel) {
+    return MyTextField(
+      focusNode: viewModel.usernameFocus,
+      controller: viewModel.emailController!,
+      hintText: "E-mail",
+      obscureText: false,
+      keyboardType: TextInputType.emailAddress,
+      prefixIcon: const Icon(
+        CupertinoIcons.mail_solid,
       ),
     );
   }

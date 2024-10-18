@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:harrypotterapi/core/components/app/chars_drawer.dart';
-import 'package:harrypotterapi/view/characters/viewmodel/characters_view_model.dart';
 import 'package:provider/provider.dart';
 
 import '../../../core/base/view/base_view.dart';
@@ -31,6 +29,7 @@ class _HomeViewState extends State<HomeView> {
   Scaffold buildScaffold(BuildContext context, HomeViewModel viewModel) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         centerTitle: true,
         title: Text(viewModel.title!),
         actions: [

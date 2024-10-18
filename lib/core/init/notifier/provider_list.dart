@@ -1,3 +1,5 @@
+import 'package:harrypotterapi/view/authentication/onboard/viewmodel/onboard_view_model.dart';
+
 import '../../../view/home/viewmodel/home_view_model.dart';
 import '../../../view/navigation/viewmodel/navigation_view_model.dart';
 
@@ -25,5 +27,6 @@ class ApplicationProvider {
     ChangeNotifierProvider(create: (context) => SplashViewModel()),
     ChangeNotifierProvider(create: (context) => HomeViewModel()),
     ChangeNotifierProvider(create: (context) => NavigationViewModel()),
+    ChangeNotifierProvider(create: (context) => OnboardViewModel()),
   ];
 }

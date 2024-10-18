@@ -41,9 +41,7 @@ class LoginViewModel extends BaseViewModel with ChangeNotifier {
     final email = LocaleManager.instance.getStringValue(PreferencesKeys.EMAIL);
     final password =
         LocaleManager.instance.getStringValue(PreferencesKeys.PASSWORD);
-    print("email: $email password: $password");
     if (email.isNotEmpty && password.isNotEmpty) {
-      print("GİRDİ");
       emailController?.text = email;
       passwordController?.text = password;
     }
@@ -83,6 +81,8 @@ class LoginViewModel extends BaseViewModel with ChangeNotifier {
   void logOut() async {
     try {
       await loginService?.logOut();
+      await LocaleManager.instance.clearAllSaveFirst();
+      print(LocaleManager.instance.getBoolValue(PreferencesKeys.IS_FIRST));
     } catch (e) {
       errorTextHandler('An error occured!', myContext);
     }
@@ -91,14 +91,5 @@ class LoginViewModel extends BaseViewModel with ChangeNotifier {
   void setRememberMe(bool? value) {
     _rememberMe = value;
     notifyListeners();
-  }
-
-  void deneme() {
-    final email = LocaleManager.instance.getStringValue(PreferencesKeys.EMAIL);
-    final password =
-        LocaleManager.instance.getStringValue(PreferencesKeys.PASSWORD);
-
-    print("EMAIL: $email");
-    print("PASSWORD: $password");
   }
 }

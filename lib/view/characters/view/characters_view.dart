@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:harrypotterapi/core/components/app/chars_drawer.dart';
-
 import '../../../core/base/state/base_state.dart';
 import '../../../core/base/view/base_view.dart';
+import '../../../core/constants/app/dropdownItems.dart';
 import '../../../core/constants/enums/network_route.dart';
 import '../../../core/constants/image/default_image_url.dart';
 import '../viewmodel/characters_view_model.dart';
@@ -45,15 +44,34 @@ class _CharactersViewState extends BaseState<CharactersView> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Visibility(
-              visible: viewModel.isFiltered,
-              child: TextButton(
-                onPressed: () {
-                  viewModel.fetchChars(viewModel.defaultQuery);
-                  viewModel.setIsFiltered(false);
-                },
-                child: const Text("Reset Filter"),
-              ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                DropdownButton<String>(
+                  hint: const Text("Select House"),
+                  value: viewModel.dropdownValue == ""
+                      ? null
+                      : viewModel.dropdownValue,
+                  items: Dropdownitems.items,
+                  onChanged: (value) {
+                    viewModel.setDropdownValue(value);
+                    viewModel.setQuery(NetworkRoutes.HOUSES.rawValue
+                        .replaceAll("{HOUSENAME}", viewModel.dropdownValue!));
+                    viewModel.fetchChars(viewModel.query);
+                  },
+                ),
+                Visibility(
+                  visible: viewModel.dropdownValue != "",
+                  child: TextButton(
+                    onPressed: () {
+                      viewModel.setDropdownValue("");
+                      viewModel.fetchChars(viewModel.defaultQuery);
+                      viewModel.setIsFiltered(false);
+                    },
+                    child: const Text("Reset Filter"),
+                  ),
+                ),
+              ],
             ),
             Expanded(
               child: ListView.builder(
@@ -83,7 +101,7 @@ class _CharactersViewState extends BaseState<CharactersView> {
             color: Colors.grey.withOpacity(0.5),
             spreadRadius: 1,
             blurRadius: 7,
-            offset: const Offset(0, 3), // changes position of shadow
+            offset: const Offset(0, 3),
           ),
         ],
       ),

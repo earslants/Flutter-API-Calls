@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:harrypotterapi/core/init/cache/locale_manager.dart';
 
 import '../../../../core/base/viewmodel/base_view_model.dart';
 import '../service/ISplashService.dart';
@@ -8,15 +9,16 @@ class SplashViewModel extends BaseViewModel with ChangeNotifier {
   ISplashService? splashService;
 
   @override
-  void init() {
+  Future<void> init() async {
+    await LocaleManager.prefrencesInit();
     splashService = SplashService(context: myContext);
-    checkAuth();
+    navigate();
   }
 
   @override
   void setContext(BuildContext context) => myContext = context;
 
-  void checkAuth() async {
+  void navigate() async {
     await splashService!.navigate();
   }
 }

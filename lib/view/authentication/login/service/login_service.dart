@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:harrypotterapi/core/components/app/error_handler.dart';
 
 import '../model/login_model.dart';
 import 'ILoginService.dart';
@@ -15,7 +16,7 @@ class LoginService extends ILoginService {
       await auth.signInWithEmailAndPassword(
           email: model.email!, password: model.password!);
     } catch (e) {
-      print("Auth Error: $e");
+      errorTextHandler(e.toString(), context!);
     }
   }
 
@@ -24,7 +25,7 @@ class LoginService extends ILoginService {
     try {
       auth.signOut();
     } catch (e) {
-      print(e);
+      errorTextHandler("Error", context!);
     }
   }
 }

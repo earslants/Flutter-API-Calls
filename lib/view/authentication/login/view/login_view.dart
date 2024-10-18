@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:harrypotterapi/core/constants/enums/locale_keys_enum.dart';
-import 'package:harrypotterapi/core/init/cache/locale_manager.dart';
+import '../../../../core/constants/enums/locale_keys_enum.dart';
+import '../../../../core/init/cache/locale_manager.dart';
 import '../../../../core/base/state/base_state.dart';
 import '../../../../core/base/view/base_view.dart';
 import '../../../../core/components/auth/my_text_field.dart';

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:harrypotterapi/core/constants/enums/locale_keys_enum.dart';
-import 'package:harrypotterapi/core/init/cache/locale_manager.dart';
-import 'package:harrypotterapi/view/authentication/onboard/view/onboard_view.dart';
+import '../../../../core/constants/enums/locale_keys_enum.dart';
+import '../../../../core/init/cache/locale_manager.dart';
+import '../../onboard/view/onboard_view.dart';
 
 import '../../../navigation/view/navigation_view.dart';
 import 'ISplashService.dart';

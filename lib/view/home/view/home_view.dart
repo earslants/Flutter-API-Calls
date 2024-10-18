@@ -37,7 +37,6 @@ class _HomeViewState extends State<HomeView> {
             builder: (context, viewModel, child) {
               return IconButton(
                 onPressed: () async {
-                  print(viewModel.isAuth);
                   viewModel.logOut();
                 },
                 icon: const Icon(Icons.logout),

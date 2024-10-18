@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+
+import '../../../core/base/view/base_view.dart';
 import '../../authentication/login/view/login_view.dart';
 import '../../authentication/login/viewmodel/login_view_model.dart';
 import '../../home/view/home_view.dart';
-import '../../../core/base/view/base_view.dart';
 
 class NavigationView extends StatefulWidget {
   const NavigationView({super.key});

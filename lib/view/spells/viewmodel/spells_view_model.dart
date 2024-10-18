@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:harrypotterapi/core/components/app/error_handler.dart';
 import '../../../core/base/viewmodel/base_view_model.dart';
 import '../service/ISpellsService.dart';
 import '../service/spells_service.dart';
@@ -24,8 +25,7 @@ class SpellsViewModel extends BaseViewModel with ChangeNotifier {
     try {
       spells = await spellsService!.fetchSpells();
     } catch (e) {
-      // TODO Add pop-up message view for error.
-      print("Error $e");
+      errorTextHandler("Error", myContext);
     }
     notifyListeners();
   }

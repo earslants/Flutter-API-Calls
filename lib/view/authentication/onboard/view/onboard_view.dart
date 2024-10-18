@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:harrypotterapi/core/base/state/base_state.dart';
-import 'package:harrypotterapi/core/base/view/base_view.dart';
-import 'package:harrypotterapi/core/constants/enums/locale_keys_enum.dart';
-import 'package:harrypotterapi/core/init/cache/locale_manager.dart';
-import 'package:harrypotterapi/view/authentication/login/view/login_view.dart';
-import 'package:harrypotterapi/view/authentication/onboard/viewmodel/onboard_view_model.dart';
-import 'package:harrypotterapi/view/navigation/view/navigation_view.dart';
+import '../../../../core/base/state/base_state.dart';
+import '../../../../core/base/view/base_view.dart';
+import '../../../../core/constants/enums/locale_keys_enum.dart';
+import '../../../../core/init/cache/locale_manager.dart';
+import '../../login/view/login_view.dart';
+import '../viewmodel/onboard_view_model.dart';
+import '../../../navigation/view/navigation_view.dart';
 
 class OnboardView extends StatefulWidget {
   const OnboardView({super.key});

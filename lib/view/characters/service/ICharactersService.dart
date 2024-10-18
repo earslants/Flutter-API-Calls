@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import '../model/character_model.dart';
 
 abstract class ICharactersService {

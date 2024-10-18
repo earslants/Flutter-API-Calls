@@ -14,7 +14,7 @@ class SplashService extends ISplashService {
   Future<void> navigate() async {
     await Future.delayed(const Duration(seconds: 2));
 
-    if (LocaleManager.instance.getBoolValue(PreferencesKeys.IS_FIRST)) {
+    if (!LocaleManager.instance.getBoolValue(PreferencesKeys.IS_FIRST)) {
       Navigator.pushReplacement(context!,
           MaterialPageRoute(builder: (context) => const OnboardView()));
       return;

@@ -15,6 +15,7 @@ class BaseView<T extends ChangeNotifier> extends StatefulWidget {
       required this.onPageBuilder});
 
   @override
+  // ignore: library_private_types_in_public_api
   _BaseViewState<T> createState() => _BaseViewState<T>();
 }
 

@@ -3,7 +3,6 @@ import '../../../../core/base/state/base_state.dart';
 import '../../../../core/base/view/base_view.dart';
 import '../../../../core/constants/enums/locale_keys_enum.dart';
 import '../../../../core/init/cache/locale_manager.dart';
-import '../../login/view/login_view.dart';
 import '../viewmodel/onboard_view_model.dart';
 import '../../../navigation/view/navigation_view.dart';
 
@@ -104,7 +103,7 @@ class _OnboardViewState extends BaseState<OnboardView> {
                             ? IconButton(
                                 onPressed: () {
                                   LocaleManager.instance.setBoolValue(
-                                      PreferencesKeys.IS_FIRST, false);
+                                      PreferencesKeys.IS_FIRST, true);
                                   Navigator.pushReplacement(
                                       context,
                                       MaterialPageRoute(

@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:flutter/material.dart';
 import '../../constants/app/app_constants.dart';
 import '../../init/cache/locale_manager.dart';

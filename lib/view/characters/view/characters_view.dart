@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:harrypotterapi/core/components/app/chars_drawer.dart';
 
 import '../../../core/base/state/base_state.dart';
 import '../../../core/base/view/base_view.dart';
+import '../../../core/constants/enums/network_route.dart';
 import '../../../core/constants/image/default_image_url.dart';
 import '../viewmodel/characters_view_model.dart';
 
@@ -41,7 +43,18 @@ class _CharactersViewState extends BaseState<CharactersView> {
         padding: dynamicPadding(),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            Visibility(
+              visible: viewModel.isFiltered,
+              child: TextButton(
+                onPressed: () {
+                  viewModel.fetchChars(viewModel.defaultQuery);
+                  viewModel.setIsFiltered(false);
+                },
+                child: const Text("Reset Filter"),
+              ),
+            ),
             Expanded(
               child: ListView.builder(
                 itemCount: viewModel.charsLength(),

@@ -10,8 +10,7 @@ class CharactersService extends ICharactersService {
   CharactersService({this.context});
 
   @override
-  Future<List<Character>> fetchCharacters() async {
-    final query = NetworkRoutes.CHARS.rawValue;
+  Future<List<Character>> fetchCharacters(String query) async {
     final response = await NetworkManager.instance.dioGet(path: query);
 
     // Veriyi List<Character> olarak döndürüyoruz

@@ -69,32 +69,6 @@ class Character extends BaseModel {
     this.image,
   });
 
-/*
-  factory Character.fromJson(Map<String, dynamic> json) {
-    return Character(
-      id: json['id'],
-      name: json['name'],
-      alternateNames: List<String>.from(json['alternate_names'] ?? []),
-      species: json['species'],
-      gender: json['gender'],
-      house: json['house'],
-      dateOfBirth: json['dateOfBirth'],
-      yearOfBirth: json['yearOfBirth'],
-      wizard: json['wizard'],
-      ancestry: json['ancestry'],
-      eyeColour: json['eyeColour'],
-      hairColour: json['hairColour'],
-      wand: json['wand'] != null ? Wand.fromJson(json['wand']) : null,
-      patronus: json['patronus'],
-      hogwartsStudent: json['hogwartsStudent'],
-      hogwartsStaff: json['hogwartsStaff'],
-      actor: json['actor'],
-      alternateActors: List<String>.from(json['alternate_actors'] ?? []),
-      alive: json['alive'],
-      image: json['image'],
-    );
-  }*/
-
   @override
   Map<String, dynamic> toJson() {
     return {

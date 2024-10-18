@@ -76,12 +76,6 @@ class _LoginViewState extends BaseState<LoginView> {
                             ),
                           ],
                         ),
-                        ElevatedButton(
-                          onPressed: () {
-                            viewModel.deneme();
-                          },
-                          child: const Text("DENEME"),
-                        ),
                       ],
                     ),
                   ],

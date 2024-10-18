@@ -17,9 +17,9 @@ class _LoginViewState extends BaseState<LoginView> {
   Widget build(BuildContext context) {
     return BaseView<LoginViewModel>(
       viewModel: LoginViewModel(),
-      onModelReady: (LoginViewModel model) {
+      onModelReady: (LoginViewModel model) async {
         model.setContext(context);
-        model.init();
+        await model.init(); // `init` metodunun tamamlanmasını bekliyoruz.
       },
       onPageBuilder: (BuildContext context, LoginViewModel viewModel) =>
           buildPage(context, viewModel),

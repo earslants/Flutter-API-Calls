@@ -17,8 +17,8 @@ class LoginViewModel extends BaseViewModel with ChangeNotifier {
   GlobalKey<ScaffoldState> scaffoldState = GlobalKey();
   ILoginService? loginService;
 
-  TextEditingController? emailController;
-  TextEditingController? passwordController;
+  TextEditingController? emailController = TextEditingController();
+  TextEditingController? passwordController = TextEditingController();
   FocusNode usernameFocus = FocusNode();
   FocusNode passwordFocus = FocusNode();
 
@@ -35,14 +35,15 @@ class LoginViewModel extends BaseViewModel with ChangeNotifier {
   void setContext(BuildContext context) => myContext = context;
 
   @override
-  void init() {
+  Future<void> init() async {
+    await LocaleManager.prefrencesInit();
     loginService = LoginService(context: myContext);
-    emailController = TextEditingController();
-    passwordController = TextEditingController();
     final email = LocaleManager.instance.getStringValue(PreferencesKeys.EMAIL);
     final password =
         LocaleManager.instance.getStringValue(PreferencesKeys.PASSWORD);
-    if (email != '' && password != '') {
+    print("email: $email password: $password");
+    if (email.isNotEmpty && password.isNotEmpty) {
+      print("GİRDİ");
       emailController?.text = email;
       passwordController?.text = password;
     }

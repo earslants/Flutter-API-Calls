@@ -49,6 +49,7 @@ class _CharactersViewState extends BaseState<CharactersView> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 DropdownButton<String>(
+                  dropdownColor: Colors.white,
                   hint: const Text("Select House"),
                   value: viewModel.dropdownValue == ""
                       ? null

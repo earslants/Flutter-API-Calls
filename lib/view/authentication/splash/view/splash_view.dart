@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../../core/constants/texts/app_text_styles.dart';
 
 import '../../../../core/base/state/base_state.dart';
 import '../../../../core/base/view/base_view.dart';
@@ -46,14 +47,10 @@ class _SplashViewState extends BaseState<SplashView> {
               ),
             ),
           ),
-          const Center(
+          Center(
             child: Text(
               "Welcome!",
-              style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.w800,
-                fontSize: 22,
-              ),
+              style: AppTextStyles.displayMedium.copyWith(color: Colors.white),
             ),
           ),
         ],

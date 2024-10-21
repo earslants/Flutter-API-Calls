@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../constants/texts/app_text_styles.dart';
+
 class MyTextField extends StatelessWidget {
   final TextEditingController controller;
   final String hintText;
@@ -53,7 +55,8 @@ class MyTextField extends StatelessWidget {
         fillColor: Colors.grey.shade200,
         filled: true,
         hintText: hintText,
-        hintStyle: TextStyle(color: Colors.grey[500]),
+        // hintStyle: TextStyle(color: Colors.grey[500]),
+        hintStyle: AppTextStyles.bodyMedium.copyWith(color: Colors.grey[500]),
         errorText: errorMsg,
       ),
     );

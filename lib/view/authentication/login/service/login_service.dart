@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:harrypotterapi/core/components/app/error_handler.dart';
 
+import '../../../../core/components/app/error_handler.dart';
 import '../model/login_model.dart';
 import 'ILoginService.dart';
 

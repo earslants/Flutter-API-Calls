@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:harrypotterapi/core/components/app/error_handler.dart';
+import '../../../core/components/app/error_handler.dart';
 
 import '../../../core/base/viewmodel/base_view_model.dart';
 import '../../../core/constants/enums/network_route.dart';

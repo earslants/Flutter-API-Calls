@@ -1,8 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'view/authentication/splash/view/splash_view.dart';
 import 'package:provider/provider.dart';
 import 'core/init/notifier/provider_list.dart';
+import 'view/authentication/splash/view/splash_view.dart';
 
 Future<void> main() async {
   await _init();
@@ -22,14 +22,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Harry Potter',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const SplashView(),
+      home: SplashView(),
     );
   }
 }

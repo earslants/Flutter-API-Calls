@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
 import '../../../../core/base/state/base_state.dart';
 import '../../../../core/base/view/base_view.dart';
 import '../../../../core/components/auth/my_text_field.dart';
@@ -33,13 +34,14 @@ class _LoginViewState extends BaseState<LoginView> {
         viewModel.passwordFocus.unfocus();
       },
       child: Scaffold(
+        backgroundColor: Colors.white,
         body: Column(
           children: [
             Expanded(
               flex: 4,
               child: Container(
-                color: Colors.blue,
-              ),
+                  // TODO App Logo
+                  ),
             ),
             Expanded(
               flex: 6,

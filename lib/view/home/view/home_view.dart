@@ -28,7 +28,9 @@ class _HomeViewState extends State<HomeView> {
 
   Scaffold buildScaffold(BuildContext context, HomeViewModel viewModel) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
+        backgroundColor: Colors.white,
         automaticallyImplyLeading: false,
         centerTitle: true,
         title: Text(viewModel.title!),

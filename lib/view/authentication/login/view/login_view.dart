@@ -94,14 +94,14 @@ class _LoginViewState extends BaseState<LoginView> {
       focusNode: viewModel.passwordFocus,
       controller: viewModel.passwordController!,
       hintText: "Password",
-      obscureText: viewModel.isVisible,
+      obscureText: !viewModel.isVisible,
       keyboardType: TextInputType.emailAddress,
       prefixIcon: const Icon(
         CupertinoIcons.lock_fill,
       ),
       suffixIcon: IconButton(
         onPressed: viewModel.setIsVisible,
-        icon: viewModel.isVisible
+        icon: !viewModel.isVisible
             ? const Icon(Icons.visibility_off)
             : const Icon(Icons.visibility),
       ),

@@ -118,9 +118,9 @@ class _CharactersViewState extends BaseState<CharactersView> {
                   width: 80,
                   child: Image.network(
                     viewModel.characters?[index].image == ""
-                        ? DefaultImageUrl.URL
+                        ? DefaultImageUrl.PERSON
                         : viewModel.characters?[index].image ??
-                            DefaultImageUrl.URL,
+                            DefaultImageUrl.PERSON,
                   ),
                 ),
                 Expanded(

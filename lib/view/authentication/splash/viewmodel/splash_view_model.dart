@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../../../../core/base/viewmodel/base_view_model.dart';
 import '../../../../core/init/cache/locale_manager.dart';
 import '../service/ISplashService.dart';

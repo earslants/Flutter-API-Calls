@@ -22,11 +22,11 @@ class _SplashViewState extends BaseState<SplashView> {
         model.init();
       },
       onPageBuilder: (BuildContext context, SplashViewModel viewModel) =>
-          buildScaffold(),
+          buildScaffold(context, viewModel),
     );
   }
 
-  Scaffold buildScaffold() {
+  Scaffold buildScaffold(BuildContext context, SplashViewModel viewModel) {
     return Scaffold(
       body: Stack(
         children: [

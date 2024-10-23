@@ -20,7 +20,7 @@ class _LoginViewState extends BaseState<LoginView> {
       viewModel: LoginViewModel(),
       onModelReady: (LoginViewModel model) async {
         model.setContext(context);
-        await model.init(); // `init` metodunun tamamlanmasını bekliyoruz.
+        await model.init();
       },
       onPageBuilder: (BuildContext context, LoginViewModel viewModel) =>
           buildPage(context, viewModel),

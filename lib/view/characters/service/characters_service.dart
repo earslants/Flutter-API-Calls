@@ -13,7 +13,6 @@ class CharactersService extends ICharactersService {
   Future<List<Character>> fetchCharacters(String query) async {
     final response = await NetworkManager.instance.dioGet(path: query);
 
-    // Veriyi List<Character> olarak döndürüyoruz
     return (response as List)
         .map((json) => Character().fromJson(json))
         .toList();

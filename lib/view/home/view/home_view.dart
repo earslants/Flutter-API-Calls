@@ -29,35 +29,42 @@ class _HomeViewState extends State<HomeView> {
   Scaffold buildScaffold(BuildContext context, HomeViewModel viewModel) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        automaticallyImplyLeading: false,
-        centerTitle: true,
-        title: Text(viewModel.title!),
-        actions: [
-          Consumer<LoginViewModel>(
-            builder: (context, viewModel, child) {
-              return IconButton(
-                onPressed: () async {
-                  viewModel.logOut();
-                },
-                icon: const Icon(Icons.logout),
-              );
-            },
-          ),
-        ],
-      ),
+      appBar: buildAppBar(viewModel),
       body: viewModel.body,
-      bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: Colors.black,
-        currentIndex: viewModel.pageIndex!,
-        items: const [
-          BottomNavigationBarItem(
-              icon: Icon(Icons.person), label: 'Characters'),
-          BottomNavigationBarItem(icon: Icon(Icons.star), label: 'Spells'),
-        ],
-        onTap: (value) => viewModel.setPageIndex(value),
-      ),
+      bottomNavigationBar: buildNavigationBar(viewModel),
+    );
+  }
+
+  AppBar buildAppBar(HomeViewModel viewModel) {
+    return AppBar(
+      backgroundColor: Colors.white,
+      automaticallyImplyLeading: false,
+      centerTitle: true,
+      title: Text(viewModel.title!),
+      actions: [
+        Consumer<LoginViewModel>(
+          builder: (context, viewModel, child) {
+            return IconButton(
+              onPressed: () async {
+                viewModel.logOut();
+              },
+              icon: const Icon(Icons.logout),
+            );
+          },
+        ),
+      ],
+    );
+  }
+
+  BottomNavigationBar buildNavigationBar(HomeViewModel viewModel) {
+    return BottomNavigationBar(
+      selectedItemColor: Colors.black,
+      currentIndex: viewModel.pageIndex!,
+      items: const [
+        BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Characters'),
+        BottomNavigationBarItem(icon: Icon(Icons.star), label: 'Spells'),
+      ],
+      onTap: (value) => viewModel.setPageIndex(value),
     );
   }
 }

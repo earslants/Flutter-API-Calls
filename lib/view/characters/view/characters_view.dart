@@ -45,36 +45,7 @@ class _CharactersViewState extends BaseState<CharactersView> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                DropdownButton<String>(
-                  dropdownColor: Colors.white,
-                  hint: const Text("Select House"),
-                  value: viewModel.dropdownValue == ""
-                      ? null
-                      : viewModel.dropdownValue,
-                  items: Dropdownitems.items,
-                  onChanged: (value) {
-                    viewModel.setDropdownValue(value);
-                    viewModel.setQuery(NetworkRoutes.HOUSES.rawValue
-                        .replaceAll("{HOUSENAME}", viewModel.dropdownValue!));
-                    viewModel.fetchChars(viewModel.query);
-                  },
-                ),
-                Visibility(
-                  visible: viewModel.dropdownValue != "",
-                  child: TextButton(
-                    onPressed: () {
-                      viewModel.setDropdownValue("");
-                      viewModel.fetchChars(viewModel.defaultQuery);
-                      viewModel.setIsFiltered(false);
-                    },
-                    child: const Text("Reset Filter"),
-                  ),
-                ),
-              ],
-            ),
+            buildFilterOptions(viewModel),
             Expanded(
               child: ListView.builder(
                 itemCount: viewModel.charsLength(),
@@ -85,6 +56,45 @@ class _CharactersViewState extends BaseState<CharactersView> {
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  Row buildFilterOptions(CharactersViewModel viewModel) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        buildFilter(viewModel),
+        buildResetFilter(viewModel),
+      ],
+    );
+  }
+
+  DropdownButton<String> buildFilter(CharactersViewModel viewModel) {
+    return DropdownButton<String>(
+      dropdownColor: Colors.white,
+      hint: const Text("Select House"),
+      value: viewModel.dropdownValue == "" ? null : viewModel.dropdownValue,
+      items: Dropdownitems.items,
+      onChanged: (value) {
+        viewModel.setDropdownValue(value);
+        viewModel.setQuery(NetworkRoutes.HOUSES.rawValue
+            .replaceAll("{HOUSENAME}", viewModel.dropdownValue!));
+        viewModel.fetchChars(viewModel.query);
+      },
+    );
+  }
+
+  Visibility buildResetFilter(CharactersViewModel viewModel) {
+    return Visibility(
+      visible: viewModel.dropdownValue != "",
+      child: TextButton(
+        onPressed: () {
+          viewModel.setDropdownValue("");
+          viewModel.fetchChars(viewModel.defaultQuery);
+          viewModel.setIsFiltered(false);
+        },
+        child: const Text("Reset Filter"),
       ),
     );
   }

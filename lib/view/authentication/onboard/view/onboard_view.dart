@@ -33,129 +33,146 @@ class _OnboardViewState extends BaseState<OnboardView> {
       backgroundColor: Colors.white,
       body: Column(
         children: [
-          Expanded(
-            flex: 53,
-            child: Stack(
-              children: [
-                PageView(
-                  onPageChanged: (value) => viewModel.setPageIndex(value),
-                  controller: viewModel.pageController,
-                  children: [
-                    buildPageOne(),
-                    buildPageTwo(),
-                    buildPageThree(),
-                  ],
-                ),
-                Padding(
-                  padding: EdgeInsets.all(dynamicHeight(.01)),
-                  child: Align(
-                    alignment: Alignment.bottomCenter,
-                    child: SizedBox(
-                      height: 10,
-                      child: Center(
-                        child: ListView.builder(
-                          shrinkWrap: true,
-                          scrollDirection: Axis.horizontal,
-                          itemCount: 3,
-                          itemBuilder: (context, index) {
-                            return Container(
-                              margin: const EdgeInsets.symmetric(horizontal: 2),
-                              height: 10,
-                              width: 10,
-                              decoration: BoxDecoration(
-                                color: viewModel.pageIndex == index
-                                    ? Colors.red
-                                    : Colors.blue.shade300,
-                                shape: BoxShape.circle,
-                              ),
-                            );
-                          },
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Expanded(
-            flex: 47,
-            child: Container(
-              width: double.infinity,
-              padding: EdgeInsets.symmetric(
-                  horizontal: 30, vertical: dynamicHeight(.06)),
-              decoration: BoxDecoration(
-                color: Colors.blue.shade100,
-                borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(36),
-                  topRight: Radius.circular(36),
-                ),
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(
-                    children: [
-                      Text(
-                        viewModel.getPageTitle(),
-                        style: AppTextStyles.headline2,
-                        textAlign: TextAlign.center,
-                      ),
-                      SizedBox(
-                        height: dynamicHeight(.02),
-                      ),
-                      Text(
-                        viewModel.getPageContent(),
-                        style: AppTextStyles.bodyLarge,
-                        textAlign: TextAlign.center,
-                      ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      TextButton(
-                        onPressed: () {
-                          LocaleManager.instance
-                              .setBoolValue(PreferencesKeys.IS_FIRST, true);
-                          Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      const NavigationView()));
-                        },
-                        child: Text(
-                          "Skip",
-                          style: AppTextStyles.bodyLarge.copyWith(
-                            color: Colors.grey.shade600,
-                          ),
-                        ),
-                      ),
-                      FloatingActionButton(
-                        backgroundColor: Colors.orange,
-                        foregroundColor: Colors.white,
-                        onPressed: () {
-                          if (viewModel.pageIndex == 2) {
-                            LocaleManager.instance
-                                .setBoolValue(PreferencesKeys.IS_FIRST, true);
-                            Navigator.pushReplacement(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        const NavigationView()));
-                          } else {
-                            viewModel.incPageIndex();
-                          }
-                        },
-                        child: const Icon(Icons.arrow_forward_ios),
-                      ),
-                    ],
-                  )
-                ],
-              ),
-            ),
-          ),
+          buildImagePart(viewModel),
+          buildInfoPart(viewModel, context),
         ],
+      ),
+    );
+  }
+
+  Expanded buildImagePart(OnboardViewModel viewModel) {
+    return Expanded(
+      flex: 53,
+      child: Stack(
+        children: [
+          PageView(
+            onPageChanged: (value) => viewModel.setPageIndex(value),
+            controller: viewModel.pageController,
+            children: [
+              buildPageOne(),
+              buildPageTwo(),
+              buildPageThree(),
+            ],
+          ),
+          buildPageIndex(viewModel),
+        ],
+      ),
+    );
+  }
+
+  Expanded buildInfoPart(OnboardViewModel viewModel, BuildContext context) {
+    return Expanded(
+      flex: 47,
+      child: Container(
+        width: double.infinity,
+        padding:
+            EdgeInsets.symmetric(horizontal: 30, vertical: dynamicHeight(.06)),
+        decoration: BoxDecoration(
+          color: Colors.blue.shade100,
+          borderRadius: const BorderRadius.only(
+            topLeft: Radius.circular(36),
+            topRight: Radius.circular(36),
+          ),
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            buildPageTexts(viewModel),
+            buildButtons(context, viewModel)
+          ],
+        ),
+      ),
+    );
+  }
+
+  Column buildPageTexts(OnboardViewModel viewModel) {
+    return Column(
+      children: [
+        Text(
+          viewModel.getPageTitle(),
+          style: AppTextStyles.headline2,
+          textAlign: TextAlign.center,
+        ),
+        SizedBox(
+          height: dynamicHeight(.02),
+        ),
+        Text(
+          viewModel.getPageContent(),
+          style: AppTextStyles.bodyLarge,
+          textAlign: TextAlign.center,
+        ),
+      ],
+    );
+  }
+
+  Row buildButtons(BuildContext context, OnboardViewModel viewModel) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        TextButton(
+          onPressed: () {
+            LocaleManager.instance.setBoolValue(PreferencesKeys.IS_FIRST, true);
+            Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const NavigationView()));
+          },
+          child: Text(
+            "Skip",
+            style: AppTextStyles.bodyLarge.copyWith(
+              color: Colors.grey.shade600,
+            ),
+          ),
+        ),
+        FloatingActionButton(
+          backgroundColor: Colors.orange,
+          foregroundColor: Colors.white,
+          onPressed: () {
+            if (viewModel.pageIndex == 2) {
+              LocaleManager.instance
+                  .setBoolValue(PreferencesKeys.IS_FIRST, true);
+              Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const NavigationView()));
+            } else {
+              viewModel.incPageIndex();
+            }
+          },
+          child: const Icon(Icons.arrow_forward_ios),
+        ),
+      ],
+    );
+  }
+
+  Padding buildPageIndex(OnboardViewModel viewModel) {
+    return Padding(
+      padding: EdgeInsets.all(dynamicHeight(.01)),
+      child: Align(
+        alignment: Alignment.bottomCenter,
+        child: SizedBox(
+          height: 10,
+          child: Center(
+            child: ListView.builder(
+              shrinkWrap: true,
+              scrollDirection: Axis.horizontal,
+              itemCount: 3,
+              itemBuilder: (context, index) {
+                return Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 2),
+                  height: 10,
+                  width: 10,
+                  decoration: BoxDecoration(
+                    color: viewModel.pageIndex == index
+                        ? Colors.red
+                        : Colors.blue.shade300,
+                    shape: BoxShape.circle,
+                  ),
+                );
+              },
+            ),
+          ),
+        ),
       ),
     );
   }

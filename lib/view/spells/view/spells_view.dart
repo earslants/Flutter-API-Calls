@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-
 import '../../../core/base/state/base_state.dart';
 import '../../../core/base/view/base_view.dart';
+import '../../../core/components/app/shimmer_widget.dart';
 import '../viewmodel/spells_view_model.dart';
 
 class SpellsView extends StatefulWidget {
@@ -26,11 +26,10 @@ class _SpellsViewState extends BaseState<SpellsView> {
 
   Widget buildPage(BuildContext context, SpellsViewModel viewModel) {
     if (viewModel.spells == null) {
-      return const Center(
-        child: SizedBox(
-          height: 50,
-          width: 50,
-          child: CircularProgressIndicator(),
+      return SafeArea(
+        child: Padding(
+          padding: dynamicPadding(),
+          child: const ShimmerWidget(),
         ),
       );
     }

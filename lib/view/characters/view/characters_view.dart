@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../core/base/state/base_state.dart';
 import '../../../core/base/view/base_view.dart';
+import '../../../core/components/app/shimmer_widget.dart';
 import '../../../core/constants/app/dropdownItems.dart';
 import '../../../core/constants/enums/network_route.dart';
 import '../../../core/constants/image/default_image_url.dart';
@@ -30,11 +31,10 @@ class _CharactersViewState extends BaseState<CharactersView> {
 
   Widget buildPage(BuildContext context, CharactersViewModel viewModel) {
     if (viewModel.characters == null) {
-      return const Center(
-        child: SizedBox(
-          height: 50,
-          width: 50,
-          child: CircularProgressIndicator(),
+      return SafeArea(
+        child: Padding(
+          padding: dynamicPadding(),
+          child: const ShimmerWidget(),
         ),
       );
     }

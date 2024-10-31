@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-
+import 'package:harrypotterapi/core/constants/navigation/navigation_constants.dart';
+import 'package:harrypotterapi/core/init/navigation/navigation_service.dart';
 import '../../../../core/base/state/base_state.dart';
 import '../../../../core/base/view/base_view.dart';
 import '../../../../core/constants/enums/locale_keys_enum.dart';
 import '../../../../core/constants/image/default_image_url.dart';
 import '../../../../core/constants/texts/app_text_styles.dart';
 import '../../../../core/init/cache/locale_manager.dart';
-import '../../../navigation/view/navigation_view.dart';
 import '../viewmodel/onboard_view_model.dart';
 
 class OnboardView extends StatefulWidget {
@@ -113,10 +113,8 @@ class _OnboardViewState extends BaseState<OnboardView> {
         TextButton(
           onPressed: () {
             LocaleManager.instance.setBoolValue(PreferencesKeys.IS_FIRST, true);
-            Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const NavigationView()));
+            NavigationService.instance
+                .navigateToPageClear(path: NavigationConstants.NAVIGATONVIEW);
           },
           child: Text(
             "Skip",
@@ -132,10 +130,8 @@ class _OnboardViewState extends BaseState<OnboardView> {
             if (viewModel.pageIndex == 2) {
               LocaleManager.instance
                   .setBoolValue(PreferencesKeys.IS_FIRST, true);
-              Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const NavigationView()));
+              NavigationService.instance
+                  .navigateToPageClear(path: NavigationConstants.NAVIGATONVIEW);
             } else {
               viewModel.incPageIndex();
             }

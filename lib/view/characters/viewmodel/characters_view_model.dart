@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../../../core/components/app/error_handler.dart';
 
 import '../../../core/base/viewmodel/base_view_model.dart';
+import '../../../core/components/app/error_handler.dart';
 import '../../../core/constants/enums/network_route.dart';
 import '../model/character_model.dart';
 import '../service/ICharactersService.dart';

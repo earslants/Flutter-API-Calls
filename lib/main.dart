@@ -1,6 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
+import 'core/init/navigation/navigation_route.dart';
+import 'core/init/navigation/navigation_service.dart';
 import 'core/init/notifier/provider_list.dart';
 import 'view/authentication/splash/view/splash_view.dart';
 
@@ -22,10 +25,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
+      navigatorKey: NavigationService.instance.navigatorKey,
+      onGenerateRoute: NavigationRoute.instance.generateRoute,
       debugShowCheckedModeBanner: false,
       title: 'Harry Potter',
-      home: SplashView(),
+      home: const SplashView(),
     );
   }
 }

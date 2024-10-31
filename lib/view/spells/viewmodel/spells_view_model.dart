@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import '../../../core/components/app/error_handler.dart';
+
 import '../../../core/base/viewmodel/base_view_model.dart';
+import '../../../core/components/app/error_handler.dart';
+import '../model/spell_model.dart';
 import '../service/ISpellsService.dart';
 import '../service/spells_service.dart';
-
-import '../model/spell_model.dart';
 
 class SpellsViewModel extends BaseViewModel with ChangeNotifier {
   List<Spell>? spells;

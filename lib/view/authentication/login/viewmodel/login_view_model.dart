@@ -1,9 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+
+import '../../../../core/base/viewmodel/base_view_model.dart';
 import '../../../../core/components/app/error_handler.dart';
 import '../../../../core/constants/enums/locale_keys_enum.dart';
 import '../../../../core/init/cache/locale_manager.dart';
-import '../../../../core/base/viewmodel/base_view_model.dart';
 import '../model/login_model.dart';
 import '../service/ILoginService.dart';
 import '../service/login_service.dart';

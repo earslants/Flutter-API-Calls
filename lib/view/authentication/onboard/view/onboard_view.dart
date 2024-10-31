@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import '../../../../core/constants/image/default_image_url.dart';
-import '../../../../core/constants/texts/app_text_styles.dart';
+
 import '../../../../core/base/state/base_state.dart';
 import '../../../../core/base/view/base_view.dart';
 import '../../../../core/constants/enums/locale_keys_enum.dart';
+import '../../../../core/constants/image/default_image_url.dart';
+import '../../../../core/constants/texts/app_text_styles.dart';
 import '../../../../core/init/cache/locale_manager.dart';
-import '../viewmodel/onboard_view_model.dart';
 import '../../../navigation/view/navigation_view.dart';
+import '../viewmodel/onboard_view_model.dart';
 
 class OnboardView extends StatefulWidget {
   const OnboardView({super.key});
